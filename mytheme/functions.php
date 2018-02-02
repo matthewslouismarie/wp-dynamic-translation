@@ -10,9 +10,10 @@ add_filter('gettext', 'dynamicallyTranslate', 10, 3);
 function dynamicallyTranslate($translation, $phraseToTranslate, $domain)
 {
     if ('fr' === USER_LANG) {
-        return "French for {$phraseToTranslate}";
+        $translations = include 'translation-arrays/fr.php';
+        return $translations[$phraseToTranslate];
     } else {
-    return "English for {$phraseToTranslate}";
+        return $phraseToTranslate;
     }
 }
 
